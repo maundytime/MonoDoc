@@ -18,7 +18,7 @@ export type Mono = {
 
 Each page could has 1 state map.
 
-```typescript
+```ts
 type KeyPageState = Record<string, PageState>;
 ```
 
@@ -27,7 +27,7 @@ type KeyPageState = Record<string, PageState>;
 
 A reserved state, used for navigation and tab control.
 
-```typescript
+```ts
 type To = {
   value: string[];
   onValue?: OnValueTask[];
@@ -39,7 +39,7 @@ type To = {
 
 To store a state on a page. All tasks in the array would be called when value assigned.
 
-```typescript
+```ts
 type PageState = {
   value: unknown;
   onValue: OnValueTask[];
@@ -63,7 +63,7 @@ An object linked to another object which bring a value.
 - `event` is an array, all events in `event` will be called.
 - `map` is a 2 * 2 number array, and is used to map value base on it. Not support string mapping now.
 
-```typescript
+```ts
 type OnValueTask = {
   keyPath?: string[];
   type?: 'number' | 'string';
@@ -71,4 +71,69 @@ type OnValueTask = {
   event?: PageEvent[];
   map?: number[][];
 };
+```
+
+
+### ToEvent
+
+Event that switch tab or change navigation.
+
+```ts
+type ToEvent = {
+  task: 'to';
+  type?: 'push' | 'pop' | 'dismiss' | 'select';
+  key?: string;
+};
+```
+
+
+### StateEvent
+
+Event that change value of a state.
+
+```
+type StateEvent = {
+  task: 'state';
+  parent?: boolean;
+  key: string;
+  value?: unknown;
+  type?: 'push' | 'pop' | 'add' | 'subtract' | 'multiply' | 'divide' | 'mod';
+};
+```
+
+
+### FetchEvent
+
+Event that fetch value.
+
+```
+type FetchEvent = {
+  task: 'fetch';
+  url?: string;
+  method?: 'get' | 'set';
+  app?: {
+    key: string;
+    secret: string;
+  };
+  user?: {
+    key: string;
+    secret: string;
+  };
+  onValue?: OnValueTask[];
+};
+```
+
+
+### ViewEvent
+
+Event that change view tree.
+
+```
+type ViewEvent = {
+  task: 'views';
+  // 这里的unknown其实是Subview，是不是叫做keySubview更好？但由于里面可以有from，没法直接写Subview
+  value?: Record<string, unknown>;
+  duration?: number;
+};
+type Event = ToEvent | StateEvent | FetchEvent | ViewEvent;
 ```
