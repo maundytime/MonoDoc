@@ -49,7 +49,7 @@ type PageState = {
 
 ### OnValueTask
 
-An object linked to another object which bring a value.
+An object linked to another object which bring a value. This kind of object has `OnValueTask`.
 
 |Object|Receive|
 |-|-|
@@ -71,6 +71,15 @@ type OnValueTask = {
   event?: PageEvent[];
   map?: number[][];
 };
+```
+
+
+### Event
+
+An event is change state and view, or fetch value.
+
+```ts
+type Event = ToEvent | StateEvent | FetchEvent | ViewEvent;
 ```
 
 
