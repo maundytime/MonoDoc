@@ -2,8 +2,7 @@
 通过 event 来改变 page 所维护的数据，比如改变一个 key state，或一个 key view map。
 event 也可以从远端获取数据。
 
-state -> onValue -> event -> state/view
-view -> event -> state/view
+<img width="870" alt="image" src="https://user-images.githubusercontent.com/3490007/232338416-9abe0507-ccd3-46ae-b9cd-720ac6d03a61.png">
 
 
 ### Mono
