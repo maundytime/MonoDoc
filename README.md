@@ -100,7 +100,7 @@ type ToEvent = {
 
 Event that change value of a state.
 
-```
+```ts
 type StateEvent = {
   task: 'state';
   parent?: boolean;
@@ -115,7 +115,7 @@ type StateEvent = {
 
 Event that fetch value.
 
-```
+```ts
 type FetchEvent = {
   task: 'fetch';
   url?: string;
@@ -137,7 +137,7 @@ type FetchEvent = {
 
 Event that change view tree.
 
-```
+```ts
 type ViewEvent = {
   task: 'views';
   // 这里的unknown其实是Subview，是不是叫做keySubview更好？但由于里面可以有from，没法直接写Subview
