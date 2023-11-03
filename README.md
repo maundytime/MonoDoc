@@ -7,7 +7,8 @@ event 也可以从远端获取数据。
 
 ### Mono
 
-Represent a compomont. A compomont must has a tree structure, and initial value of `subviews` represent the initial tree. The tree can be changed during the app running by the `views` events.
+也就是 page. 1 个 page 维护一个树结构 subviews。发出 views event 会改变 subviews。
+
 
 ```typescript
 export type Mono = {
